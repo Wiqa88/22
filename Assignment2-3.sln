@@ -1,0 +1,144 @@
+﻿using System;
+
+string? name = null;
+
+MainMenu();
+
+void MainMenu()
+{
+    bool exitRequested = false;
+    while (!exitRequested)
+    {
+        const string header = "Fresco trolley and basket Program";
+        Console.WriteLine(new string(' ', Math.Max(Console.WindowWidth / 2 - (header.Length / 2), 0)) + header);
+        Console.WriteLine();
+        Console.WriteLine(new string('-', Console.WindowWidth));
+        Console.WriteLine();
+        Console.WriteLine("Which action would you like to perform:");
+        Console.WriteLine("Press 1 to get a trolley");
+        Console.WriteLine("Press 2 to to get a basket");
+        Console.WriteLine("Press 3 to ...");
+        Console.WriteLine("Press 4 to ...");
+        Console.WriteLine("Press 5 to ...");
+        Console.WriteLine("Press 6 To exit");
+        Console.WriteLine();
+
+        switch (Console.ReadKey(true).Key)
+        {
+            case ConsoleKey.NumPad1:
+            case ConsoleKey.D1:
+                Console.WriteLine("You Chose Option #1");
+                Option1Menu();
+                break;
+            case ConsoleKey.NumPad2:
+            case ConsoleKey.D2:
+                Console.WriteLine("You Chose Option #2");
+                Console.Write("Enter your name: ");
+                name = Console.ReadLine();
+                break;
+            case ConsoleKey.NumPad3:
+            case ConsoleKey.D3:
+                Console.WriteLine("You Chose Option #3");
+                break;
+            case ConsoleKey.NumPad4:
+            case ConsoleKey.D4:
+                Console.WriteLine("You Chose Option #4");
+                Console.WriteLine("Your name is " + name);
+                break;
+            case ConsoleKey.NumPad5:
+            case ConsoleKey.D5:
+                Console.WriteLine("You Chose Option #5");
+                break;
+            case ConsoleKey.NumPad6:
+            case ConsoleKey.D6:
+                Console.WriteLine("You Chose Option #6 (EXIT)");
+                exitRequested = true;
+                break;
+            default:
+                Console.WriteLine("Invalid Input. Try Again.");
+                break;
+        }
+    }
+}
+
+void Option1Menu()
+{
+    bool backRequested = false;
+    while (!backRequested)
+    {
+        Console.WriteLine("-------Sub Menu");
+        Console.WriteLine("Which action would you like to perform:");
+        Console.WriteLine("Press A To get a medium sized trolley");
+        Console.WriteLine("Press B To get a long sized trolley");
+        Console.WriteLine("Press C To return a trolley");
+        Console.WriteLine("Press D To return to previous menu");
+        Console.WriteLine();
+        switch (Console.ReadKey(true).Key)
+        {
+            case ConsoleKey.A: Console.WriteLine("Long size trolley selected"); 
+                OptionBMenu();
+                break;
+            case ConsoleKey.B:
+                Console.WriteLine("Medium Size trolley selected");
+                OptionBMenu();
+                break;
+            case ConsoleKey.C: Console.WriteLine("You Chose Option C"); break;
+            case ConsoleKey.D: Console.WriteLine("You Chose Option D (EXIT)"); backRequested = true; break;
+            default: Console.WriteLine("Invalid Input. Try Again."); break;
+        }
+    }
+}
+
+void OptionBMenu()
+{
+    bool backRequested = false;
+    while (!backRequested)
+    {
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("A 5 pound payment is required to go further with this process.");
+        Console.WriteLine("Press 1 pay by card");
+        Console.WriteLine("Press 2 pay by cash");
+        Console.WriteLine("Press 3 To return to previous menu");
+        Console.WriteLine();
+        switch (Console.ReadKey(true).Key)
+        {
+            case ConsoleKey.D1: Console.WriteLine("Please Insert card into the card machine and enter your name below"); 
+                name = Console.ReadLine();
+                Option2Menu();
+                break;
+            case ConsoleKey.D2:
+                Console.WriteLine("Cash selected, Please pay the amount due to continue and enter your name below ");
+                
+                name = Console.ReadLine();
+                Option2Menu();
+                break;
+            case ConsoleKey.D3: Console.WriteLine("You Chose Option 3 (EXIT)"); backRequested = true; break;
+            default: Console.WriteLine("Invalid Input. Try Again."); break;
+        }
+    }
+}
+
+
+void Option2Menu()
+{
+    bool backRequested = false;
+    while (!backRequested)
+    {
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("Which action would you like to perform:");
+        Console.WriteLine("Your payment is done and has come under the name of");
+        Console.WriteLine(""+name);
+        Console.WriteLine("Press D to go back");
+
+
+        Console.WriteLine();
+        switch (Console.ReadKey(true).Key)
+        {
+
+            case ConsoleKey.D: Console.WriteLine("You Chose Option D (EXIT)"); backRequested = true; break;
+            default: Console.WriteLine("Invalid Input. Try Again."); break;
+        }
+    }
+}
